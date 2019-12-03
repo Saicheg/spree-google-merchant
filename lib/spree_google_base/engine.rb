@@ -20,6 +20,18 @@ module SpreeGoogleBase
         ['g:quantity','total_count_on_hand'],
         ['g:availability', 'google_base_availability']
       ]
+      
+      SpreeGoogleBase::FeedBuilder::GOOGLE_BASE_VARIANT_ATTR_MAP = [
+        ['g:id', 'id'],
+        ['g:mpn', 'sku'],
+        ['g:gtin','ean'],
+        ['description', 'google_base_description'],
+        ['g:price', 'price'],
+        ['g:condition', 'google_base_condition'],
+        ['g:brand', 'google_base_brand'],
+        ['g:quantity','total_count_on_hand'],
+        ['g:availability', 'google_base_availability']
+      ]
     end
 
     def self.activate
