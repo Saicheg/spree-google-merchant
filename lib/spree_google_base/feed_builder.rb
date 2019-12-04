@@ -104,19 +104,19 @@ module SpreeGoogleBase
     end
 
     def build_product(xml, product)
-      if product.variants.empty?
-        xml.item do
-          xml.tag!('link', product_url(product.slug, :host => domain))
-          build_images(xml, product)
-
-          GOOGLE_BASE_ATTR_MAP.each do |k, v|
-            value = product.send(v)
-            xml.tag!(k, value.to_s) if value.present?
-          end
-        end
-      else
+      unless product.variants.empty?
         product.variants.each do |variant|
           build_variant(xml, variant)
+        end
+        return
+      end
+      xml.item do
+        xml.tag!('link', product_url(product.slug, :host => domain))
+        build_images(xml, product)
+
+        GOOGLE_BASE_ATTR_MAP.each do |k, v|
+          value = product.send(v)
+          xml.tag!(k, value.to_s) if value.present?
         end
       end
     end

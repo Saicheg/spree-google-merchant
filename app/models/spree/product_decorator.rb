@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Spree
   Product.class_eval do
     scope :google_base_scope, -> { preload(:taxons, {:master => :images}) }
@@ -23,15 +25,10 @@ module Spree
     end
 
     def google_base_brand
-      # Taken from github.com/romul/spree-solr-search
-      # app/models/spree/product_decorator.rb
-      #
-      pp = Spree::ProductProperty.joins(:property)
-                                 .where(:product_id => self.id)
-                                 .where(:spree_properties => {:name => 'brand'})
-                                 .first
-
-      pp ? pp.value : nil
+      Spree::ProductProperty.joins(:property)
+        .where(:product_id => self.id)
+        .where(:spree_properties => {:name => 'brand'})
+        .first&.value
     end
 
     def google_base_product_type

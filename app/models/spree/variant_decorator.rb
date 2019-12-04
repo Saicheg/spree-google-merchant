@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Spree
   Variant.class_eval do
     def google_base_condition
@@ -13,15 +14,10 @@ module Spree
     end
 
     def google_base_brand
-      # Taken from github.com/romul/spree-solr-search
-      # app/models/spree/product_decorator.rb
-      #
-      pp = Spree::ProductProperty.joins(:property)
-                                .where(:product_id => self.product.id)
-                                .where(:spree_properties => {:name => 'brand'})
-                                .first
-
-      pp ? pp.value : nil
+      Spree::ProductProperty.joins(:property)
+        .where(:product_id => self.product.id)
+        .where(:spree_properties => {:name => 'brand'})
+        .first&.value
     end
 
     def total_count_on_hand
