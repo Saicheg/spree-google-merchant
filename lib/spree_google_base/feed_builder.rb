@@ -127,7 +127,7 @@ module SpreeGoogleBase
         xml.tag!('link', product_url(product.slug, :host => domain))
         xml.tag!('title', product.name)
         xml.tag!('price', product.price)
-        build_images(xml, variant.product)
+        build_images(xml, variant)
         
         GOOGLE_BASE_VARIANT_ATTR_MAP.each do |k, v|
           value = variant.send(v)
@@ -137,10 +137,15 @@ module SpreeGoogleBase
     end
 
     def build_images(xml, product)
-      if Spree::GoogleBase::Config[:enable_additional_images]
-        main_image, *more_images = product.master.images
+      if product.class == Spree::Product
+        images = product.master.images
       else
-        main_image = product.master.images.first
+        images = product.images
+      end
+      if Spree::GoogleBase::Config[:enable_additional_images]
+        main_image, *more_images = images
+      else
+        main_image = images.first
       end
 
       return unless main_image

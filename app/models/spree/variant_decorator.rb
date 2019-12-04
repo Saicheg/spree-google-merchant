@@ -27,5 +27,9 @@ module Spree
     def total_count_on_hand
       stock_items.sum(:count_on_hand)
     end
+
+    def google_base_image_size
+      :large
+    end
   end
 end
