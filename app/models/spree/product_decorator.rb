@@ -14,6 +14,10 @@ module Spree
       'in stock'
     end
 
+    def google_base_price
+      "#{price} #{cost_currency}"
+    end
+
     def google_base_image_size
       :large
     end

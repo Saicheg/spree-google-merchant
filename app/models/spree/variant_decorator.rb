@@ -31,5 +31,9 @@ module Spree
     def google_base_image_size
       :large
     end
+
+    def google_base_price
+      "#{price} #{cost_currency}"
+    end
   end
 end

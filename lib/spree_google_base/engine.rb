@@ -13,7 +13,7 @@ module SpreeGoogleBase
         ['g:mpn', 'sku'],
         ['title', 'name'],
         ['description', 'google_base_description'],
-        ['g:price', 'price'],
+        ['g:price', 'google_base_price'],
         ['g:condition', 'google_base_condition'],
         ['g:product_type', 'google_base_product_type'],
         ['g:brand', 'google_base_brand'],
@@ -23,10 +23,10 @@ module SpreeGoogleBase
       
       SpreeGoogleBase::FeedBuilder::GOOGLE_BASE_VARIANT_ATTR_MAP = [
         ['g:id', 'id'],
-        ['g:mpn', 'sku'],
+        ['g:mpn', 'mpn'],
         ['g:gtin','ean'],
         ['description', 'google_base_description'],
-        ['g:price', 'price'],
+        ['g:price', 'google_base_price'],
         ['g:condition', 'google_base_condition'],
         ['g:brand', 'google_base_brand'],
         ['g:quantity','total_count_on_hand'],
