@@ -128,7 +128,7 @@ module SpreeGoogleBase
         xml.tag!('title', product.name)
         xml.tag!('price', product.price)
         build_images(xml, variant)
-        
+
         GOOGLE_BASE_VARIANT_ATTR_MAP.each do |k, v|
           value = variant.send(v)
           xml.tag!(k, value.to_s) if value.present?

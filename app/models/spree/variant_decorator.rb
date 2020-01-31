@@ -2,6 +2,10 @@
 
 module Spree
   Variant.class_eval do
+    def google_base_id
+      Spree::Product.exists?(id) ? "Variant#{id}" : id
+    end
+
     def google_base_condition
       'new'
     end
