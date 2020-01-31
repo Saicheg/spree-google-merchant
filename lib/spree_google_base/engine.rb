@@ -10,7 +10,8 @@ module SpreeGoogleBase
       # See http://support.google.com/merchants/bin/answer.py?hl=en&answer=188494#US for all other fields
       SpreeGoogleBase::FeedBuilder::GOOGLE_BASE_ATTR_MAP = [
         ['g:id', 'id'],
-        ['g:mpn', 'sku'],
+        ['g:mpn', 'mpn'],
+        ['g:gtin', 'ean'],
         ['title', 'name'],
         ['description', 'google_base_description'],
         ['g:price', 'google_base_price'],
@@ -20,7 +21,7 @@ module SpreeGoogleBase
         ['g:quantity','total_count_on_hand'],
         ['g:availability', 'google_base_availability']
       ]
-      
+
       SpreeGoogleBase::FeedBuilder::GOOGLE_BASE_VARIANT_ATTR_MAP = [
         ['g:id', 'id'],
         ['g:mpn', 'mpn'],
