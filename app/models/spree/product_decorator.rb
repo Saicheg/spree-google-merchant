@@ -4,6 +4,10 @@ module Spree
   Product.class_eval do
     scope :google_base_scope, -> { preload(:taxons, {:master => :images}) }
 
+    def google_base_id
+      Spree::Variant.exists?(id) ? "Product#{id}" : id
+    end
+
     def google_base_description
       description
     end
