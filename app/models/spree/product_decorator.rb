@@ -17,11 +17,11 @@ module Spree
     end
 
     def google_base_availability
-      'in stock'
+      self.can_supply? ? 'in stock' : 'out of stock'
     end
 
     def google_base_price
-      "#{price} #{cost_currency}"
+      "#{price_in(cost_currency).price.to_f} #{cost_currency}"
     end
 
     def google_base_image_size
